@@ -85,6 +85,8 @@
           </div>
         </div>
 
+        <div th:replace="fragments/save-resume"></div>
+
       </main>
 
       <footer th:aria-label="#{layout.title}" class="footer">
@@ -131,5 +133,8 @@
       enable()
     </script>
 
+    <script type="module">
+      import '/app/tax-withholding-estimator/resources/js/save-resume.js'
+    </script>
   </body>
 </html>

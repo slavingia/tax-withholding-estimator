@@ -1,0 +1,37 @@
+<!--
+  Taxpayer-facing "Save & resume" surface for the Tax Withholding Estimator.
+  Reversible, keyboard-accessible USWDS disclosure. Reuses the Fact Graph
+  serialization via save-resume.js. See ADR-005.
+-->
+<div class="save-resume usa-accordion margin-top-4" aria-label="Save and resume">
+  <h2 class="usa-accordion__heading">
+    <button type="button" class="usa-accordion__button" aria-expanded="false" aria-controls="save-resume-content">
+      <span th:text="#{save-resume.heading}">Save your progress</span>
+    </button>
+  </h2>
+  <div id="save-resume-content" class="usa-accordion__content usa-prose" hidden>
+    <p th:text="#{save-resume.description}">
+      You can save your estimate to a file on this device and load it back later
+      to pick up where you left off. Your information stays on your device and is
+      not sent to the IRS.
+    </p>
+
+    <h3 th:text="#{save-resume.save.heading}">Save to a file</h3>
+    <button class="usa-button usa-button--outline" type="button" onclick="saveEstimateToFile()">
+      <span th:text="#{save-resume.save.button}">Save my estimate</span>
+    </button>
+    <span id="save-estimate-status" class="save-resume__status" role="status" aria-live="polite"
+          th:data-success="#{save-resume.save.success}" th:data-error="#{save-resume.save.error}"></span>
+
+    <h3 th:text="#{save-resume.resume.heading}">Resume a saved estimate</h3>
+    <p class="usa-hint" th:text="#{save-resume.resume.hint}">
+      Loading a saved file will replace your current estimate.
+    </p>
+    <label class="usa-sr-only" for="resume-estimate-input" th:text="#{save-resume.resume.label}">Choose a saved estimate file</label>
+    <input id="resume-estimate-input" class="usa-file-input" type="file" accept="application/json,.json"
+           onchange="resumeEstimateFromFile(event)"
+           th:data-confirm="#{save-resume.resume.confirm}">
+    <span id="resume-estimate-status" class="save-resume__status" role="status" aria-live="polite"
+          th:data-error="#{save-resume.resume.error}"></span>
+  </div>
+</div>
