@@ -14,9 +14,15 @@
  * client-side. Nothing is uploaded.
  */
 
+import { openModal } from './modals.js'
+
 const FORMAT = 'irs-twe-estimate'
 const FORMAT_VERSION = 1
 const FILE_NAME = 'twe-estimate.json'
+
+document.getElementById('save-resume-button').addEventListener('click', () => {
+  openModal(document.getElementById('modal-save-resume'))
+})
 
 /**
  * Serialize the current Fact Graph into the versioned interchange wrapper.

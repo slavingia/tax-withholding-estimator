@@ -36,8 +36,9 @@ Add a taxpayer-facing **Save & resume** surface to the main TWE flow:
   `window.loadFactGraph()`.
 - Implemented in a dedicated `save-resume.js` that **reuses** the existing
   `factGraph.toJson()` / `loadFactGraph()` plumbing — no new serialization.
-- Presented as a reversible USWDS accordion near the form actions, keyboard- and
-  screen-reader-accessible, with a privacy note.
+- Presented as a header button beside the language switcher, opening a named
+  native dialog with save/resume controls and a privacy note. On mobile, the
+  button occupies its own row below the logo and language switcher.
 
 This **amends ADR-004**: export/import of the Fact Graph is no longer
 internal-only. The remainder of the audit panel stays internal-only and
